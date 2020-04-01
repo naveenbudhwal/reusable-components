@@ -74,8 +74,10 @@
 /* ---------------------------------------- */
 
 .tag-input {
-  width: 100%;
-  border: 1px solid #eee;
+  width: 80%;
+  margin-left: 10%;
+  border: 1px solid #ddd;
+  border-radius: 10px;
   font-size: 0.9em;
   height: 50px;
   box-sizing: border-box;
