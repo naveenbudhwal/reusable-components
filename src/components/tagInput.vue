@@ -1,9 +1,12 @@
 <template>
   <div class="tag-input">
-    <div v-for="(tag, index) in tags" :key="index" class="tag-input__tag">
-      <span @click="removeTag(index)">x</span>
-      {{ tag }}
-    </div>
+    <transition-group name="slide-in" appear>
+      <div v-for="(tag, index) in tags" :key="tag" class="tag-input__tag">
+        <span @click="removeTag(index)">x</span>
+        {{ tag }}
+      </div>
+    </transition-group>
+    <button id="cta" @click="sortTags()">Sort</button>
     <input 
       type='text' 
       placeholder="Enter a Tag" 
@@ -38,12 +41,37 @@
         if(event.target.value.length === 0) {
           this.removeTag(this.tags.length - 1)
         }
+      },
+      sortTags() {
+        this.tags.sort()
       }
     }
   }
 </script>
 
 <style scoped>
+
+/* ----------- Transition styles ---------- */
+.slide-in-enter {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.slide-in-enter-active,
+.slide-in-leave-active {
+  transition: all 0.3s ease-in-out;
+}
+
+.slide-in-leave {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.slide-in-move {
+  transition: all 0.3s ease-in-out;
+}
+
+/* ---------------------------------------- */
 
 .tag-input {
   width: 100%;
@@ -77,6 +105,17 @@
   font-size: 0.9em;
   line-height: 50px;
   background: none;
+}
+
+#cta {
+  border: none;
+  height: 30px;
+  margin-top: 10px;
+  border-radius: 5px;
+  background: #000;
+  color: #fff;
+  margin-right: 10px;
+  cursor: pointer;
 }
 
 </style>
