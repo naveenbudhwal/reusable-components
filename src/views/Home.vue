@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Some reusable components</h1>
+    <h1 class="heading">Some reusable components</h1>
     <hr class="material-hr">
     <h3 class="comp-name">Tag Input</h3>
     <tag-input />
@@ -17,6 +17,10 @@ import tagInput from '@/components/tagInput.vue';
 </script>
 
 <style scoped>
+
+.heading {
+  text-align: center;
+}
 
 .comp-name {
   text-align: left;
